@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Napi Idezet for Elementor
+ * Plugin Name: Daily Quotes MRK
  * Description: Napi idézet Elementor-widgettel és idézetkezelő adminfelülettel.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Plugin URI: https://github.com/mrkocka/napi_idezet_HUN
  * Author: mrkocka
  * Author URI: https://github.com/mrkocka

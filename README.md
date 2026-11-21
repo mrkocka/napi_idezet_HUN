@@ -1,4 +1,4 @@
-# Napi Idezet for Elementor
+# Daily Quotes MRK
 
 Önálló WordPress-plugin napi idézet megjelenítéséhez Elementorban. Az idézet és a szerző külön formázható, az elrendezés eszközönként állítható. Elementor Pro nem szükséges.
 
