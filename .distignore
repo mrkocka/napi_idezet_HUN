@@ -1,0 +1,8 @@
+.git
+.gitignore
+.distignore
+.github
+README.md
+tests
+tools
+dist

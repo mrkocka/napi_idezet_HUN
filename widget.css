@@ -1,0 +1,16 @@
+.elementor-widget-niel_daily_quote .niel-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.elementor-widget-niel_daily_quote .niel-quote__text,
+.elementor-widget-niel_daily_quote .niel-quote__author {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.elementor-widget-niel_daily_quote .niel-quote__text {
+  white-space: pre-wrap;
+}
