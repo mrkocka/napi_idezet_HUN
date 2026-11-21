@@ -6,13 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function niel_register_quote_type() {
     register_post_status( 'napi_idezet_archived', array(
-        'label'    => __( 'Archived quote', 'napi-idezet-elementor' ),
+        'label'    => __( 'Archived quote', 'daily-quotes-mrk' ),
         'public'   => false,
         'internal' => true,
     ) );
 
     register_post_type( 'napi_idezet', array(
-        'label'           => __( 'Quotes', 'napi-idezet-elementor' ),
+        'label'           => __( 'Quotes', 'daily-quotes-mrk' ),
         'public'          => false,
         'show_ui'         => false,
         'rewrite'         => false,
@@ -80,20 +80,20 @@ function niel_get_editable_quote( $id ) {
 
 function niel_save_quote() {
     if ( ! current_user_can( 'napi_idezet_access' ) ) {
-        wp_die( esc_html__( 'You do not have permission to save quotes.', 'napi-idezet-elementor' ), '', array( 'response' => 403 ) );
+        wp_die( esc_html__( 'You do not have permission to save quotes.', 'daily-quotes-mrk' ), '', array( 'response' => 403 ) );
     }
 
     if ( 'POST' !== sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ?? '' ) ) ) {
-        wp_die( esc_html__( 'Saving requires a POST request.', 'napi-idezet-elementor' ), '', array( 'response' => 405 ) );
+        wp_die( esc_html__( 'Saving requires a POST request.', 'daily-quotes-mrk' ), '', array( 'response' => 405 ) );
     }
 
     $id = filter_var( isset( $_POST['quote_id'] ) && is_string( $_POST['quote_id'] ) ? sanitize_text_field( wp_unslash( $_POST['quote_id'] ) ) : '0', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 0 ) ) );
     if ( false === $id ) {
-        wp_die( esc_html__( 'Invalid quote ID.', 'napi-idezet-elementor' ), '', array( 'response' => 400 ) );
+        wp_die( esc_html__( 'Invalid quote ID.', 'daily-quotes-mrk' ), '', array( 'response' => 400 ) );
     }
 
     if ( $id ? ! niel_get_editable_quote( $id ) : ! current_user_can( 'napi_idezet_create' ) ) {
-        wp_die( esc_html__( 'You do not have permission to save quotes.', 'napi-idezet-elementor' ), '', array( 'response' => 403 ) );
+        wp_die( esc_html__( 'You do not have permission to save quotes.', 'daily-quotes-mrk' ), '', array( 'response' => 403 ) );
     }
 
     check_admin_referer( 'napi_idezet_save_' . $id, 'napi_idezet_nonce' );
@@ -135,21 +135,21 @@ add_action( 'admin_post_napi_idezet_save', 'niel_save_quote' );
 
 function niel_archive_quote() {
     if ( ! current_user_can( 'napi_idezet_access' ) || ! current_user_can( 'napi_idezet_archive' ) ) {
-        wp_die( esc_html__( 'You do not have permission to archive quotes.', 'napi-idezet-elementor' ), '', array( 'response' => 403 ) );
+        wp_die( esc_html__( 'You do not have permission to archive quotes.', 'daily-quotes-mrk' ), '', array( 'response' => 403 ) );
     }
 
     if ( 'POST' !== sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ?? '' ) ) ) {
-        wp_die( esc_html__( 'Archiving requires a POST request.', 'napi-idezet-elementor' ), '', array( 'response' => 405 ) );
+        wp_die( esc_html__( 'Archiving requires a POST request.', 'daily-quotes-mrk' ), '', array( 'response' => 405 ) );
     }
 
     $id = filter_var( isset( $_POST['quote_id'] ) && is_string( $_POST['quote_id'] ) ? sanitize_text_field( wp_unslash( $_POST['quote_id'] ) ) : '', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1 ) ) );
     if ( false === $id ) {
-        wp_die( esc_html__( 'Invalid quote ID.', 'napi-idezet-elementor' ), '', array( 'response' => 400 ) );
+        wp_die( esc_html__( 'Invalid quote ID.', 'daily-quotes-mrk' ), '', array( 'response' => 400 ) );
     }
 
     check_admin_referer( 'napi_idezet_archive_' . $id, 'napi_idezet_nonce' );
     if ( ! niel_get_editable_quote( $id ) ) {
-        wp_die( esc_html__( 'This quote cannot be archived.', 'napi-idezet-elementor' ), '', array( 'response' => 403 ) );
+        wp_die( esc_html__( 'This quote cannot be archived.', 'daily-quotes-mrk' ), '', array( 'response' => 403 ) );
     }
 
     $result = wp_update_post( array(

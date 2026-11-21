@@ -25,7 +25,7 @@ Az integrációs ellenőrzés külön, eldobható WordPress-telepítésben futta
 
 ~~~sh
 wp eval-file tests/integration.php
-wp plugin check napi-idezet-elementor
+wp plugin check daily-quotes-mrk --slug=daily-quotes-mrk
 ~~~
 
 A WordPress.org leírása a readme.txt, a licenc a LICENSE fájlban található. A Plugin Check eredménye nem helyettesíti a WordPress.org kézi felülvizsgálatát. A GitHub-feltöltés nem jelent automatikus WordPress.org-publikálást.
@@ -41,3 +41,5 @@ Licenc: GPL-2.0-or-later.
 - Böngészős vizuális ellenőrzés és a deklarált legkisebb verziók külön futtatása nem történt.
 
 Az 1.1.2-es verzió alapértelmezett kezelőfelülete angol, és fordítható marad. A feltöltött idézetek nyelve és tartalma nem változik.
+
+Az 1.1.3-as kiadás mappája és fordítási szövegtartománya daily-quotes-mrk. Korábbi napi-idezet-elementor telepítés esetén előbb kapcsold ki a régi példányt, majd telepítsd és aktiváld az új ZIP-et. A mentett adatok és a widget beállításai megmaradnak.

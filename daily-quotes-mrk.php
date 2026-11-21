@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Daily Quotes MRK
  * Description: Display a daily quote in Elementor and manage quotes in the WordPress dashboard.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Plugin URI: https://github.com/mrkocka/napi_idezet_HUN
  * Author: mrkocka
  * Author URI: https://github.com/mrkocka
@@ -11,7 +11,7 @@
  * Requires Plugins: elementor
  * Requires at least: 6.5
  * Requires PHP: 7.4
- * Text Domain: napi-idezet-elementor
+ * Text Domain: daily-quotes-mrk
  * Domain Path: /languages
  */
 
@@ -28,7 +28,7 @@ add_action( 'plugins_loaded', static function () {
     if ( ! did_action( 'elementor/loaded' ) ) {
         add_action( 'admin_notices', static function () {
             if ( current_user_can( 'activate_plugins' ) ) {
-                echo '<div class="notice notice-warning"><p>' . esc_html__( 'Activate Elementor to use the Daily Quotes MRK widget.', 'napi-idezet-elementor' ) . '</p></div>';
+                echo '<div class="notice notice-warning"><p>' . esc_html__( 'Activate Elementor to use the Daily Quotes MRK widget.', 'daily-quotes-mrk' ) . '</p></div>';
             }
         } );
     }

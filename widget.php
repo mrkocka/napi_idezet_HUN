@@ -6,24 +6,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class NIEL_Daily_Quote_Widget extends \Elementor\Widget_Base {
     public function get_name() { return 'niel_daily_quote'; }
-    public function get_title() { return __( 'Daily Quotes MRK', 'napi-idezet-elementor' ); }
+    public function get_title() { return __( 'Daily Quotes MRK', 'daily-quotes-mrk' ); }
     public function get_icon() { return 'eicon-blockquote'; }
     public function get_categories() { return array( 'general' ); }
     public function get_style_depends() { return array( 'niel-widget' ); }
-    public function get_keywords() { return array( __( 'quote', 'napi-idezet-elementor' ), 'quote', __( 'author', 'napi-idezet-elementor' ), 'daily' ); }
+    public function get_keywords() { return array( __( 'quote', 'daily-quotes-mrk' ), 'quote', __( 'author', 'daily-quotes-mrk' ), 'daily' ); }
     protected function is_dynamic_content(): bool { return true; }
 
     protected function register_controls() {
-        $this->start_controls_section( 'layout_section', array( 'label' => __( 'Layout', 'napi-idezet-elementor' ) ) );
+        $this->start_controls_section( 'layout_section', array( 'label' => __( 'Layout', 'daily-quotes-mrk' ) ) );
         $this->add_responsive_control( 'direction', array(
-            'label' => __( 'Quote and author', 'napi-idezet-elementor' ),
+            'label' => __( 'Quote and author', 'daily-quotes-mrk' ),
             'type' => \Elementor\Controls_Manager::SELECT,
             'default' => 'column',
-            'options' => array( 'column' => __( 'Stacked', 'napi-idezet-elementor' ), 'row' => __( 'Side by side', 'napi-idezet-elementor' ) ),
+            'options' => array( 'column' => __( 'Stacked', 'daily-quotes-mrk' ), 'row' => __( 'Side by side', 'daily-quotes-mrk' ) ),
             'selectors' => array( '{{WRAPPER}} .niel-quote' => 'flex-direction: {{VALUE}};' ),
         ) );
         $this->add_responsive_control( 'gap', array(
-            'label' => __( 'Spacing', 'napi-idezet-elementor' ),
+            'label' => __( 'Spacing', 'daily-quotes-mrk' ),
             'type' => \Elementor\Controls_Manager::SLIDER,
             'size_units' => array( 'px', 'em', 'rem' ),
             'range' => array( 'px' => array( 'min' => 0, 'max' => 120 ) ),
@@ -31,21 +31,21 @@ class NIEL_Daily_Quote_Widget extends \Elementor\Widget_Base {
             'selectors' => array( '{{WRAPPER}} .niel-quote' => 'gap: {{SIZE}}{{UNIT}};' ),
         ) );
         $this->add_responsive_control( 'alignment', array(
-            'label' => __( 'Text alignment', 'napi-idezet-elementor' ),
+            'label' => __( 'Text alignment', 'daily-quotes-mrk' ),
             'type' => \Elementor\Controls_Manager::SELECT,
             'default' => 'left',
-            'options' => array( 'left' => __( 'Left', 'napi-idezet-elementor' ), 'center' => __( 'Center', 'napi-idezet-elementor' ), 'right' => __( 'Right', 'napi-idezet-elementor' ) ),
+            'options' => array( 'left' => __( 'Left', 'daily-quotes-mrk' ), 'center' => __( 'Center', 'daily-quotes-mrk' ), 'right' => __( 'Right', 'daily-quotes-mrk' ) ),
             'selectors' => array( '{{WRAPPER}} .niel-quote' => 'text-align: {{VALUE}};' ),
         ) );
         $this->end_controls_section();
 
-        foreach ( array( 'text' => __( 'Quote', 'napi-idezet-elementor' ), 'author' => __( 'Author', 'napi-idezet-elementor' ) ) as $part => $label ) {
+        foreach ( array( 'text' => __( 'Quote', 'daily-quotes-mrk' ), 'author' => __( 'Author', 'daily-quotes-mrk' ) ) as $part => $label ) {
             $selector = '{{WRAPPER}} .niel-quote__' . $part;
             $this->start_controls_section( $part . '_style', array(
                 'label' => $label, 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ) );
             $this->add_control( $part . '_color', array(
-                'label' => __( 'Color', 'napi-idezet-elementor' ), 'type' => \Elementor\Controls_Manager::COLOR,
+                'label' => __( 'Color', 'daily-quotes-mrk' ), 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array( $selector => 'color: {{VALUE}};' ),
             ) );
             $this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array(
@@ -62,7 +62,7 @@ class NIEL_Daily_Quote_Widget extends \Elementor\Widget_Base {
         $quote = niel_daily_quote();
         if ( ! $quote ) {
             if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-                echo '<p>' . esc_html__( 'No active quotes yet. Add a quote on the Quotes dashboard page.', 'napi-idezet-elementor' ) . '</p>';
+                echo '<p>' . esc_html__( 'No active quotes yet. Add a quote on the Quotes dashboard page.', 'daily-quotes-mrk' ) . '</p>';
             }
             return;
         }

@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: elementor
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,7 +52,7 @@ The plugin reuses records from the earlier custom Napi idezet shortcode plugin. 
 == Installation ==
 
 1. Install and activate Elementor.
-2. Upload the napi-idezet-elementor directory to wp-content/plugins, or install the release ZIP through Plugins > Add New > Upload Plugin.
+2. Upload the daily-quotes-mrk directory to wp-content/plugins, or install the release ZIP through Plugins > Add New > Upload Plugin.
 3. Activate Daily Quotes MRK.
 4. Open Quotes in the dashboard and add a quote.
 5. Open an Elementor page and add the Daily Quotes MRK widget.
@@ -78,6 +78,10 @@ Check the WordPress timezone and purge your full-page or CDN cache. The new sele
 
 == Changelog ==
 
+= 1.1.3 =
+* Align the translation domain, language template, main file, and package directory with the daily-quotes-mrk directory slug.
+* Preserve existing quote records, capabilities, and widget identifiers.
+
 = 1.1.2 =
 * Use English for all interface strings, widget controls, notices, and plugin metadata.
 * Refresh the translation template. Existing quote content is unchanged.
@@ -94,6 +98,9 @@ Check the WordPress timezone and purge your full-page or CDN cache. The new sele
 * Initial standalone daily Elementor widget with separate quote and author styles.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+Deactivate any earlier napi-idezet-elementor installation before activating this daily-quotes-mrk package. Existing quote data and widget settings are retained.
 
 = 1.1.2 =
 The default interface is now English. Existing quotes and widget settings are retained.
