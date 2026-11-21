@@ -19,13 +19,7 @@ A korábbi shortcode-os plugint kapcsold ki. A meglévő idézetek megmaradnak, 
 
 A teljesoldalas/CDN gyorsítótárat a napi váltáshoz és módosítások után frissíteni kell.
 
-## Fejlesztés és csomagolás
-
-A repó gyökerében találhatók a telepíthető plugin fájljai. A tools/build.py csak az engedélyezett kiadási fájlokból készít napi-idezet-elementor gyökérmappájú ZIP-et:
-
-~~~sh
-python3 tools/build.py
-~~~
+## Ellenőrzés
 
 Az integrációs ellenőrzés külön, eldobható WordPress-telepítésben futtatható, aktív Elementor és e plugin mellett. Tesztidézeteket és tesztfelhasználót hoz létre, ezért éles oldalon ne futtasd:
 
