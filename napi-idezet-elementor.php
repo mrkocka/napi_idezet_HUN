@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Daily Quotes MRK
- * Description: Napi idézet Elementor-widgettel és idézetkezelő adminfelülettel.
- * Version: 1.1.1
+ * Description: Display a daily quote in Elementor and manage quotes in the WordPress dashboard.
+ * Version: 1.1.2
  * Plugin URI: https://github.com/mrkocka/napi_idezet_HUN
  * Author: mrkocka
  * Author URI: https://github.com/mrkocka
@@ -28,7 +28,7 @@ add_action( 'plugins_loaded', static function () {
     if ( ! did_action( 'elementor/loaded' ) ) {
         add_action( 'admin_notices', static function () {
             if ( current_user_can( 'activate_plugins' ) ) {
-                echo '<div class="notice notice-warning"><p>' . esc_html__( 'A Napi idézet widget használatához aktiváld az Elementort.', 'napi-idezet-elementor' ) . '</p></div>';
+                echo '<div class="notice notice-warning"><p>' . esc_html__( 'Activate Elementor to use the Daily Quotes MRK widget.', 'napi-idezet-elementor' ) . '</p></div>';
             }
         } );
     }

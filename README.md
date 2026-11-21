@@ -4,7 +4,7 @@
 
 ## Telepítés
 
-A kiadási ZIP-et töltsd fel a WordPress bővítménytelepítőjében. Elementor legyen telepítve és aktív. Az **Idézetek** menüben rögzíts egy idézetet, majd az Elementorban keresd a **Napi idézet** widgetet.
+A kiadási ZIP-et töltsd fel a WordPress bővítménytelepítőjében. Elementor legyen telepítve és aktív. Az **Quotes** menüben rögzíts egy idézetet, majd az Elementorban keresd a **Daily Quotes MRK** widgetet.
 
 A korábbi shortcode-os plugint kapcsold ki. A meglévő idézetek megmaradnak, az adatbázis szerkezete és a widget belső azonosítója kompatibilis a korábbi változattal.
 
@@ -45,3 +45,5 @@ Licenc: GPL-2.0-or-later.
 - Elementor-widget regisztrációja, vezérlői és szerveroldali HTML-kimenete ellenőrizve.
 - Hivatalos Plugin Check, futásidejű ellenőrzésekkel: nincs jelzett hiba.
 - Böngészős vizuális ellenőrzés és a deklarált legkisebb verziók külön futtatása nem történt.
+
+Az 1.1.2-es verzió alapértelmezett kezelőfelülete angol, és fordítható marad. A feltöltött idézetek nyelve és tartalma nem változik.

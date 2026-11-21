@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: elementor
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ Daily Quotes MRK displays a daily quote and its attribution using a native Eleme
 
 Elementor is required to use the widget. The quote management screen remains available if Elementor is temporarily disabled. Elementor Pro is not required.
 
-The interface's original language is Hungarian and all user-facing strings are translatable.
+The default interface language is English and all user-facing strings are translatable.
 
 = Daily selection and caching =
 
@@ -54,8 +54,8 @@ The plugin reuses records from the earlier custom Napi idezet shortcode plugin. 
 1. Install and activate Elementor.
 2. Upload the napi-idezet-elementor directory to wp-content/plugins, or install the release ZIP through Plugins > Add New > Upload Plugin.
 3. Activate Daily Quotes MRK.
-4. Open Idezetek (Idézetek) in the dashboard and add a quote.
-5. Open an Elementor page and add the Napi idezet (Napi idézet) widget.
+4. Open Quotes in the dashboard and add a quote.
+5. Open an Elementor page and add the Daily Quotes MRK widget.
 6. Adjust layout under Content and the quote/author typography and colors under Style.
 
 == Frequently Asked Questions ==
@@ -78,6 +78,10 @@ Check the WordPress timezone and purge your full-page or CDN cache. The new sele
 
 == Changelog ==
 
+= 1.1.2 =
+* Use English for all interface strings, widget controls, notices, and plugin metadata.
+* Refresh the translation template. Existing quote content is unchanged.
+
 = 1.1.1 =
 * Rename the plugin to Daily Quotes MRK; retain all data and widget identifiers.
 
@@ -90,6 +94,9 @@ Check the WordPress timezone and purge your full-page or CDN cache. The new sele
 * Initial standalone daily Elementor widget with separate quote and author styles.
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+The default interface is now English. Existing quotes and widget settings are retained.
 
 = 1.1.1 =
 Plugin name changed to Daily Quotes MRK. No data migration is required.

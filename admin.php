@@ -2,8 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 function niel_register_admin_page() {
     $page_hook = add_menu_page(
-        __( 'Idézetek', 'napi-idezet-elementor' ),
-        __( 'Idézetek', 'napi-idezet-elementor' ),
+        __( 'Quotes', 'napi-idezet-elementor' ),
+        __( 'Quotes', 'napi-idezet-elementor' ),
         'napi_idezet_access',
         'napi-idezet',
         'niel_render_admin_page',

@@ -9,12 +9,12 @@ $niel_status = isset( $_GET['quote_status'] ) && is_string( $_GET['quote_status'
     : '';
 // phpcs:enable WordPress.Security.NonceVerification.Recommended
 $niel_notices = array(
-    'saved' => array( 'success', __( 'Az idézetet mentettük.', 'napi-idezet-elementor' ) ),
-    'updated' => array( 'success', __( 'Az idézetet módosítottuk.', 'napi-idezet-elementor' ) ),
-    'archived' => array( 'success', __( 'Az idézetet archiváltuk.', 'napi-idezet-elementor' ) ),
-    'archive_error' => array( 'error', __( 'Nem sikerült archiválni az idézetet. Próbáld újra.', 'napi-idezet-elementor' ) ),
-    'empty' => array( 'error', __( 'Add meg az idézet szövegét.', 'napi-idezet-elementor' ) ),
-    'error' => array( 'error', __( 'Nem sikerült menteni az idézetet. Próbáld újra.', 'napi-idezet-elementor' ) ),
+    'saved' => array( 'success', __( 'Quote saved.', 'napi-idezet-elementor' ) ),
+    'updated' => array( 'success', __( 'Quote updated.', 'napi-idezet-elementor' ) ),
+    'archived' => array( 'success', __( 'Quote archived.', 'napi-idezet-elementor' ) ),
+    'archive_error' => array( 'error', __( 'Could not archive the quote. Please try again.', 'napi-idezet-elementor' ) ),
+    'empty' => array( 'error', __( 'Please enter the quote text.', 'napi-idezet-elementor' ) ),
+    'error' => array( 'error', __( 'Could not save the quote. Please try again.', 'napi-idezet-elementor' ) ),
 );
 $niel_page_url = admin_url( 'admin.php?page=napi-idezet' );
 // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only selection; access checked per record and writes require a nonce.
@@ -35,7 +35,7 @@ if ( ! current_user_can( 'read_private_napi_idezet_quotes' ) ) {
 $niel_quotes = get_posts( $niel_query );
 ?>
 <div class="wrap idezet-admin">
-  <h1><?php esc_html_e( 'Idézetek', 'napi-idezet-elementor' ); ?></h1>
+  <h1><?php esc_html_e( 'Quotes', 'napi-idezet-elementor' ); ?></h1>
 
   <?php if ( isset( $niel_notices[ $niel_status ] ) ) : ?>
     <div class="notice notice-<?php echo esc_attr( $niel_notices[ $niel_status ][0] ); ?>">
@@ -45,38 +45,38 @@ $niel_quotes = get_posts( $niel_query );
 
   <?php if ( $niel_editing || current_user_can( 'napi_idezet_create' ) ) : ?>
     <section class="idezet-admin__panel" aria-labelledby="uj-idezet">
-      <h2 id="uj-idezet"><?php echo esc_html( $niel_editing ? __( 'Idézet szerkesztése', 'napi-idezet-elementor' ) : __( 'Új idézet', 'napi-idezet-elementor' ) ); ?></h2>
+      <h2 id="uj-idezet"><?php echo esc_html( $niel_editing ? __( 'Edit quote', 'napi-idezet-elementor' ) : __( 'New quote', 'napi-idezet-elementor' ) ); ?></h2>
       <form class="idezet-admin__mezok" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
         <input type="hidden" name="action" value="napi_idezet_save">
         <input type="hidden" name="quote_id" value="<?php echo esc_attr( $niel_form_id ); ?>">
         <?php wp_nonce_field( 'napi_idezet_save_' . $niel_form_id, 'napi_idezet_nonce', false ); ?>
 
-        <label for="idezet-szoveg"><?php esc_html_e( 'Idézet szövege', 'napi-idezet-elementor' ); ?></label>
+        <label for="idezet-szoveg"><?php esc_html_e( 'Quote text', 'napi-idezet-elementor' ); ?></label>
         <textarea id="idezet-szoveg" name="idezet_szoveg" rows="4" required><?php echo esc_textarea( $niel_editing ? $niel_editing->post_content : '' ); ?></textarea>
 
-        <label for="idezet-szerzo"><?php esc_html_e( 'Szerző', 'napi-idezet-elementor' ); ?> <span><?php esc_html_e( '(opcionális)', 'napi-idezet-elementor' ); ?></span></label>
+        <label for="idezet-szerzo"><?php esc_html_e( 'Author', 'napi-idezet-elementor' ); ?> <span><?php esc_html_e( '(optional)', 'napi-idezet-elementor' ); ?></span></label>
         <input id="idezet-szerzo" name="idezet_szerzo" type="text" value="<?php echo esc_attr( $niel_editing ? get_post_meta( $niel_form_id, '_napi_idezet_attribution', true ) : '' ); ?>">
 
-        <button type="submit" class="button button-primary"><?php echo esc_html( $niel_editing ? __( 'Módosítás mentése', 'napi-idezet-elementor' ) : __( 'Idézet mentése', 'napi-idezet-elementor' ) ); ?></button>
+        <button type="submit" class="button button-primary"><?php echo esc_html( $niel_editing ? __( 'Save changes', 'napi-idezet-elementor' ) : __( 'Save quote', 'napi-idezet-elementor' ) ); ?></button>
         <?php if ( $niel_editing ) : ?>
-          <a href="<?php echo esc_url( $niel_page_url ); ?>"><?php esc_html_e( 'Mégse', 'napi-idezet-elementor' ); ?></a>
+          <a href="<?php echo esc_url( $niel_page_url ); ?>"><?php esc_html_e( 'Cancel', 'napi-idezet-elementor' ); ?></a>
         <?php endif; ?>
       </form>
     </section>
   <?php endif; ?>
 
   <section class="idezet-admin__panel" aria-labelledby="mentett-idezetek">
-    <h2 id="mentett-idezetek"><?php esc_html_e( 'Mentett idézetek', 'napi-idezet-elementor' ); ?></h2>
+    <h2 id="mentett-idezetek"><?php esc_html_e( 'Saved quotes', 'napi-idezet-elementor' ); ?></h2>
     <?php if ( ! $niel_quotes ) : ?>
-      <p><?php esc_html_e( 'Még nincs mentett idézet.', 'napi-idezet-elementor' ); ?></p>
+      <p><?php esc_html_e( 'No quotes have been saved yet.', 'napi-idezet-elementor' ); ?></p>
     <?php else : ?>
       <div class="idezet-admin__tablazat-keret" role="region" aria-labelledby="mentett-idezetek" tabindex="0">
         <table class="widefat striped idezet-admin__tablazat" aria-labelledby="mentett-idezetek">
           <thead>
             <tr>
-              <th scope="col"><?php esc_html_e( 'Idézet', 'napi-idezet-elementor' ); ?></th>
-              <th scope="col"><?php esc_html_e( 'Szerző', 'napi-idezet-elementor' ); ?></th>
-              <th scope="col"><?php esc_html_e( 'Műveletek', 'napi-idezet-elementor' ); ?></th>
+              <th scope="col"><?php esc_html_e( 'Quote', 'napi-idezet-elementor' ); ?></th>
+              <th scope="col"><?php esc_html_e( 'Author', 'napi-idezet-elementor' ); ?></th>
+              <th scope="col"><?php esc_html_e( 'Actions', 'napi-idezet-elementor' ); ?></th>
             </tr>
           </thead>
           <tbody>
@@ -88,13 +88,13 @@ $niel_quotes = get_posts( $niel_query );
                 <td>
                   <div class="idezet-admin__muveletek">
                     <?php if ( current_user_can( 'edit_post', $niel_quote->ID ) ) : ?>
-                      <a class="button button-small" href="<?php echo esc_url( add_query_arg( 'edit_quote', $niel_quote->ID, $niel_page_url ) . '#uj-idezet' ); ?>"><?php esc_html_e( 'Szerkesztés', 'napi-idezet-elementor' ); ?></a>
+                      <a class="button button-small" href="<?php echo esc_url( add_query_arg( 'edit_quote', $niel_quote->ID, $niel_page_url ) . '#uj-idezet' ); ?>"><?php esc_html_e( 'Edit', 'napi-idezet-elementor' ); ?></a>
                       <?php if ( current_user_can( 'napi_idezet_archive' ) ) : ?>
                         <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
                           <input type="hidden" name="action" value="napi_idezet_archive">
                           <input type="hidden" name="quote_id" value="<?php echo esc_attr( $niel_quote->ID ); ?>">
                           <?php wp_nonce_field( 'napi_idezet_archive_' . $niel_quote->ID, 'napi_idezet_nonce', false ); ?>
-                          <button type="submit" class="button button-small"><?php esc_html_e( 'Archiválás', 'napi-idezet-elementor' ); ?></button>
+                          <button type="submit" class="button button-small"><?php esc_html_e( 'Archive', 'napi-idezet-elementor' ); ?></button>
                         </form>
                       <?php endif; ?>
                     <?php endif; ?>
